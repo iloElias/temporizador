@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/animatios.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,14 +29,14 @@
         <div class="timer">
             <div id="outer-circle">
                 <div id="inner-circle">
-                    <h5 id="set-time">tempo</h5>
+                    <h5 id="set-time"></h5>
                     <form id="timer-form" onsubmit="return false">
                         <input type="text" id="time-left" autocomplete="off" placeholder="Defina um intervalo">
                         <input type="submit" hidden>
                     </form>
-                    <div class="row">
+                    <div id="opacity" class="row">
                         <img src="./images/bell-fill.svg" alt="">
-                        <h5 id="end-time">hora da finalização</h5>
+                        <h5 id="end-time"></h5>
                     </div>
                 </div>
             </div>
@@ -47,6 +47,13 @@
             <button id="del-btn">Excluir</button>
             <button id="pause-btn">Pausar</button>
             <button id="continue-btn">Retomar</button>
+        </div>
+
+        <div class="time-modes">
+            <a href="">Alarme</a>
+            <a href="">Relógio mundial</a>
+            <a href="">Cronômetro</a>
+            <a class="selected" href="">Temporizador</a>
         </div>
     </main>
     <script src="./javascript/script.js"></script>

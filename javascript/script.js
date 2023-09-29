@@ -14,8 +14,8 @@ let isPaused = false
 let clock = document.getElementById("outer-circle")
 const date = new Date()
 
-let color = "rgb(0, 255, 255)"
-let inactiveColor = "rgb(0, 175, 175)"
+let color = "#8389F9"
+let inactiveColor = "#35376A"
 
 function percentFormula(total, percentage) {
     return (total * (percentage / 100)).toFixed(1);
@@ -34,9 +34,9 @@ function secondsToTime(seconds) {
     const secondsLeft = seconds % 60;
 
     if (hours > 0) {
-        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+        return `${hours} : ${minutes < 10 ? '0 ' : ''}${minutes} : ${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
     }
-    return `${minutes}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+    return `${minutes} : ${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
 }
 
 
@@ -55,7 +55,7 @@ function legibleTime(seconds) {
         if (seconds > 0 || hours > 0) {
             timeComponents.push(`${minutes} m`);
         } else {
-            timeComponents.push(`${minutes} mim`);
+            timeComponents.push(`${minutes} min`);
         }
     }
 
@@ -115,7 +115,7 @@ function startTimer() {
     timeRunning = true
     isPaused = false
 
-    color = "rgb(0, 255, 255)"
+    color = "#8389F9"
 
     timeLeft.setAttribute("readonly", "")
     updateClock(startTime, timeToWait)
@@ -126,6 +126,8 @@ function stoptimer(){
     timeRunning = false
     isPaused = true
     color = inactiveColor
+
+    document.getElementById("opacity").style.opacity = "0.65"
 
     updateClock(startTime, timeToWait)
 }
@@ -167,7 +169,14 @@ setInterval(function () {
         color = inactiveColor
         timeRunning = false
         timeLeft.removeAttribute("readonly")
+        stoptimer()
         updateClock(startTime, timeToWait)
+        
+        deleteButton.style.display = "none"
+        pauseButton.style.display = "none"
+        continueButton.style.display = "none"
+    
+        startButton.style.display = "block"
     }
     if (!timeRunning && !isPaused) {
         color = inactiveColor
@@ -195,6 +204,8 @@ timeLeft.addEventListener("input", function () {
 startButton.addEventListener("click", function () {
     updateClock(startTime, timeToWait)
 
+    document.getElementById("opacity").style.opacity = "1"
+
     startButton.style.display = "none"
     if (timeLeft.value) {
         startTimer()
@@ -211,6 +222,8 @@ deleteButton.addEventListener("click", function () {
     stoptimer()
     timeLeft.removeAttribute("readonly")
 
+    document.getElementById("opacity").style.opacity = "0.65"
+
     deleteButton.style.display = "none"
     pauseButton.style.display = "none"
     continueButton.style.display = "none"
@@ -224,6 +237,8 @@ pauseButton.addEventListener("click", function () {
 
     stoptimer()
 
+    document.getElementById("opacity").style.opacity = "0.65"
+
     pauseButton.style.display = "none"
     continueButton.style.display = "block"
 })
@@ -232,7 +247,9 @@ continueButton.addEventListener("click", function () {
     isPaused = false
     timeRunning = true
 
-    color = "rgb(0, 255, 255)"
+    document.getElementById("opacity").style.opacity = "1"
+
+    color = "#8389F9"
     updateClock(startTime, timeToWait)
 
     continueButton.style.display = "none"
