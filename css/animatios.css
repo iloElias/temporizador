@@ -1,0 +1,9 @@
+@keyframes conic-gradient {
+    50% {
+        --opacity: 0%;
+    }
+
+    85% {
+        --opacity: 100%;
+    }
+}

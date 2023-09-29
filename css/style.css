@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media not print {
+    :root {
+        color: #eee;
+        background: url("chrome://global/skin/media/imagedoc-darknoise.png") fixed;
+    }
+}
+
+body {
+    display: flex;
+
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    margin: 25px 0 0 0;
+    width: 25%;
+    height: 550px;
+
+    background-color: #2c2c2c;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    width: 100%;
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 35px;
+    height: 35px;
+}
+
+.option img {
+    background-color: transparent;
+    border-radius: 999px;
+
+    border: 0px solid transparent;
+}
+
+.option img:hover {
+    background-color: #444444;
+    border: 5px solid #444444;
+    transition: 0.1s;
+}
+
+.option img:active {
+    background-color: #555555;
+    border: 10px solid #555555;
+
+    transition: 0.1s ease;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin: 20px 0 0 0;
+}
+
+#outer-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aqua;
+    width: 75%;
+    height: 75%;
+    border-radius: 1000px;
+    background: conic-gradient(aqua 360deg, transparent 0deg);
+
+    transition: 0.2s cubic-bezier(.23, 1, .32, 1);
+}
+
+#inner-circle {
+    display: flex;
+    justify-content: center;
+
+    gap: 35px;
+    align-items: center;
+
+    flex-direction: column;
+
+    background-color: #303030;
+    width: 97.5%;
+    height: 97.5%;
+
+    border-radius: 1000px;
+}
+
+#inner-circle:hover {
+    border: 0.1px solid #353535;
+
+    transition: 0.2s ease;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+#time-left {
+    text-align: center;
+    font-size: large;
+    font-weight: 700;
+
+    background: transparent;
+    border: none;
+}
+
+#time-left:focus {
+    border: none;
+    outline: none;
+}

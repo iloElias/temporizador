@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/animatios.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="top-bar">
+            <div class="option">
+                <img src="./images/list.svg" alt="">
+            </div>
+            <div class="option">
+                <img src="./images/plus.svg" alt="">
+            </div>
+            <div class="option">
+                <img src="./images/options.svg" alt="">
+            </div>
+        </div>
+
+        <div class="timer">
+            <div id="outer-circle">
+                <div id="inner-circle">
+                    <h5 id="set-time">tempo</h5>
+                    <form id="timer-form" onsubmit="return false">
+                        <input type="text" id="time-left">
+                        <input type="submit" hidden>
+                    </form>
+                    <div class="row">
+                        <img src="./images/bell-fill.svg" alt="">
+                        <h5 id="end-time">hora da finalização</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../javascript/script.js"></script>
+</body>
+
+</html>
