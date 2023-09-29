@@ -138,6 +138,9 @@ main {
     font-size: 3em;
     font-weight: normal;
 
+    overflow: hidden;
+    max-width: 275px;
+    border-radius: 1000px;
 
     background: transparent;
     border: none;

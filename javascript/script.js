@@ -36,7 +36,7 @@ function secondsToTime(seconds) {
     if (hours > 0) {
         return `${hours} : ${minutes < 10 ? '0 ' : ''}${minutes} : ${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
     }
-    return `${minutes  > 0 ? `${minutes} : ` : ``}${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+    return `${minutes  > 0 ? `${minutes} : ` : ``}${secondsLeft < 10 ? `${minutes > 0 ? '0':''}` : ''}${secondsLeft}`;
 }
 
 
@@ -65,7 +65,6 @@ function legibleTime(seconds) {
 
     return timeComponents.join(' ');
 }
-
 
 
 function updateClock(startTime, timeToWait) {
@@ -247,7 +246,7 @@ continueButton.addEventListener("click", function () {
     isPaused = false
     timeRunning = true
 
-    document.getElementById("opacity").style.opacity = "0.9"
+    document.getElementById("opacity").style.opacity = "0.9 "
 
     color = "#8389F9"
     updateClock(startTime, timeToWait)
