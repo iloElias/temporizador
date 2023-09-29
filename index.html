@@ -31,7 +31,7 @@
                 <div id="inner-circle">
                     <h5 id="set-time">tempo</h5>
                     <form id="timer-form" onsubmit="return false">
-                        <input type="text" id="time-left">
+                        <input type="text" id="time-left" autocomplete="off" placeholder="Defina um intervalo">
                         <input type="submit" hidden>
                     </form>
                     <div class="row">
@@ -41,8 +41,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="buttons-block">
+            <button id="start-btn">Iniciar</button>
+            <button id="del-btn">Excluir</button>
+            <button id="pause-btn">Pausar</button>
+            <button id="continue-btn">Retomar</button>
+        </div>
     </main>
-    <script src="../javascript/script.js"></script>
+    <script src="./javascript/script.js"></script>
 </body>
 
 </html>
