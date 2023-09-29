@@ -36,7 +36,7 @@ function secondsToTime(seconds) {
     if (hours > 0) {
         return `${hours} : ${minutes < 10 ? '0 ' : ''}${minutes} : ${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
     }
-    return `${minutes} : ${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+    return `${minutes  > 0 ? `${minutes} : ` : ``}${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
 }
 
 
@@ -204,7 +204,7 @@ timeLeft.addEventListener("input", function () {
 startButton.addEventListener("click", function () {
     updateClock(startTime, timeToWait)
 
-    document.getElementById("opacity").style.opacity = "1"
+    document.getElementById("opacity").style.opacity = "0.9"
 
     startButton.style.display = "none"
     if (timeLeft.value) {
@@ -247,7 +247,7 @@ continueButton.addEventListener("click", function () {
     isPaused = false
     timeRunning = true
 
-    document.getElementById("opacity").style.opacity = "1"
+    document.getElementById("opacity").style.opacity = "0.9"
 
     color = "#8389F9"
     updateClock(startTime, timeToWait)
