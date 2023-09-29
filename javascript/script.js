@@ -7,12 +7,15 @@ let deleteButton = document.getElementById("del-btn")
 let pauseButton = document.getElementById("pause-btn")
 let continueButton = document.getElementById("continue-btn")
 
-let startTime = 600;
+let startTime = 120;
 let timeToWait = startTime;
 let timeRunning = false;
 let isPaused = false
 let clock = document.getElementById("outer-circle")
 const date = new Date()
+
+let color = "rgb(0, 255, 255)"
+let inactiveColor = "rgb(0, 175, 175)"
 
 function percentFormula(total, percentage) {
     return (total * (percentage / 100)).toFixed(1);
@@ -63,8 +66,10 @@ function legibleTime(seconds) {
     return timeComponents.join(' ');
 }
 
+
+
 function updateClock(startTime, timeToWait) {
-    clock.style.background = `conic-gradient(aqua ${percentFormula(360, circleDeg(startTime, timeToWait))}deg, transparent 0deg)`
+    clock.style.background = `conic-gradient(${color} ${percentFormula(360, circleDeg(startTime, timeToWait))}deg, transparent 0deg)`
 }
 
 function formateEndDate(seconds) {
@@ -108,10 +113,23 @@ function startTimer() {
     timeToWait = startTime
 
     timeRunning = true
+    isPaused = false
+
+    color = "rgb(0, 255, 255)"
 
     timeLeft.setAttribute("readonly", "")
+    updateClock(startTime, timeToWait)
     formateTimes()
 }
+
+function stoptimer(){
+    timeRunning = false
+    isPaused = true
+    color = inactiveColor
+
+    updateClock(startTime, timeToWait)
+}
+
 
 function formateTimes() {
     startTime = formateToSeconds(timeLeft.value)
@@ -143,23 +161,29 @@ setInterval(function () {
     if (timeRunning && timeToWait >= 0) {
         timeToWait--;
         timeLeft.value = secondsToTime(timeToWait)
-
         updateClock(startTime, timeToWait)
     }
     if (timeToWait == 0) {
+        color = inactiveColor
         timeRunning = false
         timeLeft.removeAttribute("readonly")
+        updateClock(startTime, timeToWait)
     }
     if (!timeRunning && !isPaused) {
+        color = inactiveColor
         formateTimes()
+        updateClock(startTime, timeToWait)
         timeLeft.removeAttribute("readonly")
     }
 }, 1000);
 
 document.getElementById("timer-form").addEventListener("submit", function () {
-    timeLeft.value = timeLeft.value.replace(/[^0-9:]/g, "");
+    updateClock(startTime, timeToWait)
+    startButton.style.display = "none"
     if (timeLeft.value) {
         startTimer()
+        deleteButton.style.display = "block"
+        pauseButton.style.display = "block"
     }
 })
 
@@ -169,6 +193,8 @@ timeLeft.addEventListener("input", function () {
 })
 
 startButton.addEventListener("click", function () {
+    updateClock(startTime, timeToWait)
+
     startButton.style.display = "none"
     if (timeLeft.value) {
         startTimer()
@@ -178,13 +204,12 @@ startButton.addEventListener("click", function () {
 })
 
 deleteButton.addEventListener("click", function () {
-    timeRunning = false
-
     timeLeft.value = secondsToTime(startTime)
     timeToWait = startTime
 
     formateTimes();
-    updateClock(startTime, timeToWait)
+    stoptimer()
+    timeLeft.removeAttribute("readonly")
 
     deleteButton.style.display = "none"
     pauseButton.style.display = "none"
@@ -195,19 +220,22 @@ deleteButton.addEventListener("click", function () {
 
 pauseButton.addEventListener("click", function () {
     isPaused = true
+    timeRunning = false
+
+    stoptimer()
+
     pauseButton.style.display = "none"
     continueButton.style.display = "block"
-
-
-    timeRunning = false
 })
 
 continueButton.addEventListener("click", function () {
     isPaused = false
+    timeRunning = true
+
+    color = "rgb(0, 255, 255)"
+    updateClock(startTime, timeToWait)
+
     continueButton.style.display = "none"
     pauseButton.style.display = "block"
     continueButton.style.display = "none"
-
-
-    timeRunning = true
 })

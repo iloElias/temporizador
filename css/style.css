@@ -86,11 +86,10 @@ main {
     justify-content: center;
     align-items: center;
 
-    background-color: aqua;
     width: 75%;
     height: 75%;
     border-radius: 1000px;
-    background: conic-gradient(aqua 360deg, transparent 0deg);
+    background: conic-gradient(rgb(0, 175, 175) 360deg, transparent 0deg);
 
     transition: 0.2s cubic-bezier(.23, 1, .32, 1);
 }
