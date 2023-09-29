@@ -197,7 +197,7 @@ main {
     transition: none 0.1s;
 }
 
- #pause-btn {
+#pause-btn {
     display: none;
     background-color: red;
     transition: none 0.1s;
@@ -211,4 +211,8 @@ main {
 #pause-btn:active {
     background-color: rgb(212, 0, 0);
     transition: none 0.1s;
+}
+
+#continue-btn {
+    display: none;
 }
